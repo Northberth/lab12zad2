@@ -1,49 +1,43 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 
-export function Add() {
-  let { a, b } = useParams();
-  let result = parseInt(a) + parseInt(b);
-  return (
-    <div>
-      <h1>{result}</h1>
-    </div>
-  );
+function getURLAtributes(){
+    const sPage = window.location.search.substring(1);
+    let sURLVar = sPage.split("&");
+    sURLVar = sURLVar.map(element => (element.replace("x", "")));
+    sURLVar = sURLVar.map(element => (element.replace("y", "")));
+    sURLVar = sURLVar.map(element => (element.replace("=", "")));
+    sURLVar = sURLVar.map(element => (parseInt(element)));
+    return sURLVar;
 }
-
-export function Sub() {
-  let { a, b } = useParams();
-  let result = parseInt(a) - parseInt(b);
-  return (
-    <div>
-      <h1>{result}</h1>
-    </div>
-  );
+export function Add(){
+    const values = getURLAtributes();
+    return(
+        <div id={"answer"}>
+           <h1>{values[0] + values[1]} </h1>
+        </div>
+    )
 }
-
-export function Mul() {
-  let { a, b } = useParams();
-  let result = parseInt(a) * parseInt(b);
-  return (
-    <div>
-      <h1>{result}</h1>
-    </div>
-  );
+export function Sub(){
+    const values = getURLAtributes();
+    return(
+        <div id={"answer"}>
+           <h1>{values[0] - values[1]} </h1>
+        </div>
+    )
 }
-
-export function Div() {
-  let { a, b } = useParams();
-  let result = parseInt(a) / parseInt(b);
-  if (parseInt(b) === 0){
-    return (
-      <div>
-        <h1>Can't divide by 0</h1>
-      </div>
-    );
-  }
-  return (
-    <div>
-      <h1>{result}</h1>
-    </div>
-  );
+export function Mul(){
+    const values = getURLAtributes();
+    return(
+        <div id={"answer"}>
+          <h1>{values[0] * values[1]} </h1>
+        </div>
+    )
+}
+export function Div(){
+    const values = getURLAtributes();
+    return(
+        <div id={"answer"}>
+         <h1>{values[1] === 0 ? "Nie moge pokazać" : values[0] / values[1]} </h1>
+        </div>
+    )
 }

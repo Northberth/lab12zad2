@@ -5,10 +5,10 @@ import { Add, Sub, Mul, Div } from "./Calculator";
 export default function App() {
   return (
     <Routes>
-      <Route path="add/:a/:b" element={<Add />}/>
-      <Route path="sub/:a/:b" element={<Sub />}/>
-      <Route path="mul/:a/:b" element={<Mul />}/>
-      <Route path="div/:a/:b" element={<Div />}/>
+      <Route path="add" element={<Add />}/>
+      <Route path="sub" element={<Sub />}/>
+      <Route path="mul" element={<Mul />}/>
+      <Route path="div" element={<Div />}/>
     </Routes>
   );
 }
